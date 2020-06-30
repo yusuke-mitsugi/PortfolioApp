@@ -123,7 +123,6 @@ class DetailViewController: UIViewController, SelectStampDelegate, YosegakiDeleg
     
     
     
-    
     func takeScreenShot() {
         
         let width = CGFloat(UIScreen.main.bounds.size.width)
@@ -279,7 +278,7 @@ class DetailViewController: UIViewController, SelectStampDelegate, YosegakiDeleg
     }
     
     
-    
+   
     
     
     

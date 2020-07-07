@@ -37,7 +37,7 @@ class StampChoiseViewController: UIViewController, UICollectionViewDataSource, U
         print("コレクション")
         
         // ↓ 本番
-        for i in 1...6 {
+        for i in 1...15 {
             imageArray.append(UIImage(named: "\(i).png")!)
         }
     }

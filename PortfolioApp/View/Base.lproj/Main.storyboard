@@ -316,7 +316,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bdg-Iv-b95">
-                                <rect key="frame" x="10" y="116" width="394" height="736"/>
+                                <rect key="frame" x="10" y="146" width="394" height="706"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -325,7 +325,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="bdg-Iv-b95" firstAttribute="top" secondItem="dEo-73-EVO" secondAttribute="bottom" constant="10" id="5Ov-Tq-jlT"/>
+                            <constraint firstItem="bdg-Iv-b95" firstAttribute="top" secondItem="dEo-73-EVO" secondAttribute="bottom" constant="40" id="5Ov-Tq-jlT"/>
                             <constraint firstItem="cq1-iF-dVC" firstAttribute="bottom" secondItem="bdg-Iv-b95" secondAttribute="bottom" constant="10" id="ETl-eH-sjt"/>
                             <constraint firstItem="etD-O7-L6W" firstAttribute="top" secondItem="dEo-73-EVO" secondAttribute="bottom" id="JVS-XC-K7N"/>
                             <constraint firstItem="dEo-73-EVO" firstAttribute="leading" secondItem="cq1-iF-dVC" secondAttribute="leading" constant="10" id="Le9-WD-4vf"/>

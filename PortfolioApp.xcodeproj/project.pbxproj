@@ -24,6 +24,7 @@
 		B16004DF2473C157009E3588 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16004DE2473C157009E3588 /* PostViewController.swift */; };
 		B16004E12473C16E009E3588 /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16004E02473C16E009E3588 /* Contents.swift */; };
 		B16005232474F9A2009E3588 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16005222474F9A2009E3588 /* DetailViewController.swift */; };
+		B19649EC24AF02A2007CE3E1 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19649EB24AF02A2007CE3E1 /* Models.swift */; };
 		B1A3AB832478E9EE00B95C39 /* 5.json in Resources */ = {isa = PBXBuildFile; fileRef = B1A3AB822478E9EE00B95C39 /* 5.json */; };
 		B1A3AB852478E9F400B95C39 /* 1.json in Resources */ = {isa = PBXBuildFile; fileRef = B1A3AB842478E9F400B95C39 /* 1.json */; };
 		B1BD3846246EFEDC008B4257 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BD3845246EFEDC008B4257 /* LoginViewController.swift */; };
@@ -54,6 +55,7 @@
 		B16004DE2473C157009E3588 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		B16004E02473C16E009E3588 /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
 		B16005222474F9A2009E3588 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		B19649EB24AF02A2007CE3E1 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		B1A3AB822478E9EE00B95C39 /* 5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = 5.json; path = ../../5.json; sourceTree = "<group>"; };
 		B1A3AB842478E9F400B95C39 /* 1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = 1.json; path = ../../1.json; sourceTree = "<group>"; };
 		B1BD3845246EFEDC008B4257 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				B16004E02473C16E009E3588 /* Contents.swift */,
 				B137C07B248E92F800F8DBA7 /* Extention.swift */,
+				B19649EB24AF02A2007CE3E1 /* Models.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				B16004E12473C16E009E3588 /* Contents.swift in Sources */,
 				B1196CA7246D563E00B774CB /* SceneDelegate.swift in Sources */,
 				B16005232474F9A2009E3588 /* DetailViewController.swift in Sources */,
+				B19649EC24AF02A2007CE3E1 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

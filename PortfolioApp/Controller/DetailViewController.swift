@@ -62,7 +62,7 @@ class DetailViewController: UIViewController, SelectStampDelegate, YosegakiDeleg
                                  height: 80)
         messageLabel.frame = CGRect(x: 100,
                                     y: 300,
-                                    width: 80,
+                                    width: 100,
                                     height: 80)
     }
     
@@ -109,7 +109,7 @@ class DetailViewController: UIViewController, SelectStampDelegate, YosegakiDeleg
                     //下の１行でDBに送信したという意味
                     detailDB.updateChildValues(detailInfo)
                     //これでnavigationControllerで画面遷移した時に戻るという指示
-                    self.navigationController?.popViewController(animated: true)
+//                    self.navigationController?.popViewController(animated: true)
                 }
             }
         }
@@ -139,9 +139,10 @@ class DetailViewController: UIViewController, SelectStampDelegate, YosegakiDeleg
     
     @IBAction func saveAction(_ sender: Any) {
         
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 414, height: 414), false, 0)
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: view.frame.size.width,
+                                                      height: view.frame.size.width), false, 0)
         self.view.drawHierarchy(in: CGRect(x: 0,
-                                           y:-100,
+                                           y:-200,
                                            width: view.bounds.size.width,
                                            height: view.bounds.size.height), afterScreenUpdates: true)
         let image = UIGraphicsGetImageFromCurrentImageContext()!
@@ -215,8 +216,8 @@ class DetailViewController: UIViewController, SelectStampDelegate, YosegakiDeleg
         messageLabel = UILabel()
         nameLabel.text = messageProfile
         messageLabel.text = detailMessage
-        nameLabel.backgroundColor = .white
-        messageLabel.backgroundColor = .white
+        nameLabel.backgroundColor = .clear
+        messageLabel.backgroundColor = .clear
         messageLabel.layer.cornerRadius = 20
         nameLabel.frame = CGRect(x: xPosition, y: yPosition, width: 80, height: 40)
         messageLabel.frame = CGRect(x: xPosition, y: yPosition, width: 80, height: 100)
@@ -271,7 +272,7 @@ class DetailViewController: UIViewController, SelectStampDelegate, YosegakiDeleg
     
     
     func saveAlert() {
-        let alert = UIAlertController(title: "保存完了", message: "カメラロールに保存しました", preferredStyle: .alert)
+        let alert = UIAlertController(title: "保存完了", message: "アルバムに保存しました", preferredStyle: .alert)
         // OKボタンを追加
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)

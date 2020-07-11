@@ -23,6 +23,8 @@ pod 'AlamofireImage'
 pod 'NendSDK_iOS'
 pod 'FloatingPanel'
 pod 'JGProgressHUD'
+pod 'YPImagePicker'
+pod 'NendSDK_iOS'
 
 
 end

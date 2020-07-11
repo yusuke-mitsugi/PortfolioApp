@@ -10,10 +10,13 @@ import UIKit
 import Firebase
 import Photos
 import JGProgressHUD
+import NendAd
 
 
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, NADViewDelegate {
+    
+     private var nadView: NADView!
     
     let spinner = JGProgressHUD(style: .dark)
     
@@ -48,12 +51,25 @@ class LoginViewController: UIViewController {
         loginButton.layer.masksToBounds = true
         loginButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
         
+        // NADViewクラスを生成
+//        nadView.frame = CGRect(x: 0, y: view.frame.size.height-50, width: view.frame.size.width, height: 50)
+//        nadView = NADView(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+        nadView = NADView(frame: CGRect(x: 0,
+                                        y: view.frame.size.height-50,
+                                        width: view.frame.size.width,
+                                        height: 50))
+        nadView.backgroundColor = .secondarySystemBackground
+        // 広告枠のspotIDとapiKeyを設定(必須)
+        nadView.setNendID("ac57c9b8b460aa72a2644742dc29072a5e2333ce", spotID: "1003811")
+        // delegateを受けるオブジェクトを指定(必須)
+        nadView.delegate = self
+        // 読み込み開始(必須)
+        nadView.load()
+        // 通知有無にかかわらずViewに乗せる場合
+        self.view.addSubview(nadView)
         
-        
-        PHPhotoLibrary.requestAuthorization { (status) in
-            
+       PHPhotoLibrary.requestAuthorization { (status) in
             switch(status) {
-                
             case .authorized:
                 print("許可されています")
             case .denied:
@@ -66,15 +82,12 @@ class LoginViewController: UIViewController {
                 fatalError()
             }
         }
-        
-        
-        
     }
     
     
     override func viewDidLayoutSubviews() {
-        
         super.viewDidLayoutSubviews()
+       
         view.frame = view.bounds
         let size = view.width/3
         imageView.frame = CGRect(x: (view.width-size)/2,
@@ -85,6 +98,12 @@ class LoginViewController: UIViewController {
                                    y: imageView.bottom+20,
                                    width: view.width-60,
                                    height: 52)
+        nadView = NADView(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        nadView.resume()
     }
     
     

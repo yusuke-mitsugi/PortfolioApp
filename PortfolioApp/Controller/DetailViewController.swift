@@ -64,16 +64,96 @@ class DetailViewController: UIViewController, SelectStampDelegate, YosegakiDeleg
                                     y: 300,
                                     width: 100,
                                     height: 80)
+        
+        stampImageView.isUserInteractionEnabled = true
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(pinchGestureAction))
+        stampImageView.addGestureRecognizer(pinchGesture)
+       
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+            super.viewWillAppear(animated)
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
         
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-    }
     
+    @objc func pinchGestureAction(sender: UIPinchGestureRecognizer) {
+        
+//        let view = stampImageView.image
+//        if view == self.view {
+//            return
+//        }
+//        view.addSubview(stampImageView)
+//        print(stampImageView)
+        
+        let scale = sender.scale
+        guard let view = self.view else {
+            return
+        }
+//        self.view.isUserInteractionEnabled = false
+        if stampImageView == sender.view {
+            print("scale", scale)
+            if sender.state == .changed {
+                if scale < 0.5 {
+                    return
+                }
+                stampImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+            } else if sender.state == .ended {
+                UIView.animate(withDuration: 0.4,
+                               delay: 0,
+                               usingSpringWithDamping: 0.7,
+                               initialSpringVelocity: 1,
+                               options: [],
+                               animations: {
+//                                imageView.transform = .identity
+                })
+            }
+        }}
     
+    //サンプル
+    //    @objc func pinchGesutureAction(sender: UIPinchGestureRecognizer) {
+    //        //大きさを確認する
+    //        let scale = sender.scale
+    //        print("scale: ", scale)
+    //        if let imageView = sender.view {
+    //            if sender.state == .changed {
+    //                if scale < 0.5 {
+//                    return
+//                }
+//                imageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+//            } else if sender.state == .ended {
+//                UIView.animate(withDuration: 0.4,
+//                               delay: 0,
+//                               usingSpringWithDamping: 0.7,
+//                               initialSpringVelocity: 1,
+//                               options: [],
+//                               animations: {
+//                                 imageView.transform = .identity
+//                })
+//            }
+//        }
+//
+//    }
+    // サンプル   //画面上で指が動いた時に呼ばれるメソッド
+//       override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+//
+//           //画面上のタッチ情報を取得
+//           let touchevent = touches.first!
+//           let location = touchevent.location(in: self.view)
+//           let view = touchevent.view!
+//           if view == self.view {
+//               return
+//           }
+//           let old = touchevent.previousLocation(in: contentsImageView)
+//           let new = touchevent.location(in: contentsImageView)
+//           view.frame.origin.x += (new.x - old.x)
+//           view.frame.origin.y += (new.y - old.y)
+//           //　重要
+//           xPosition = view.frame.origin.x
+//           yPosition = view.frame.origin.y
+//       }
+//
     
     
     @IBAction func shareAction(_ sender: Any) {

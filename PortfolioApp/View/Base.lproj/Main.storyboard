@@ -104,13 +104,17 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f9p-5A-0N5">
                                                     <rect key="frame" x="20" y="20" width="374" height="280"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="f9p-5A-0N5" secondAttribute="height" multiplier="1:1" id="CQe-WI-4Ak"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="f9p-5A-0N5" firstAttribute="centerX" secondItem="LaU-dR-cTw" secondAttribute="centerX" id="9M2-Zh-aH8"/>
+                                                <constraint firstItem="f9p-5A-0N5" firstAttribute="centerX" secondItem="LaU-dR-cTw" secondAttribute="centerX" id="I6C-tK-tpc"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="f9p-5A-0N5" secondAttribute="bottom" constant="9" id="Ipg-Yy-Rwg"/>
                                                 <constraint firstItem="f9p-5A-0N5" firstAttribute="leading" secondItem="LaU-dR-cTw" secondAttribute="leadingMargin" id="UK9-wn-9EC"/>
                                                 <constraint firstItem="f9p-5A-0N5" firstAttribute="top" secondItem="LaU-dR-cTw" secondAttribute="topMargin" constant="9" id="eeD-4C-5hP"/>
-                                                <constraint firstItem="f9p-5A-0N5" firstAttribute="trailing" secondItem="LaU-dR-cTw" secondAttribute="trailingMargin" id="f1T-ZP-ICm"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -235,7 +239,7 @@
                             <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IHg-0Y-72x">
                                 <rect key="frame" x="0.0" y="759" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem title="Item" image="return" catalog="system" width="78" id="s9k-1B-Ryl">
+                                    <barButtonItem title="Item" image="return" catalog="system" width="86" id="s9k-1B-Ryl">
                                         <connections>
                                             <action selector="deleteStamp:" destination="9Fc-tB-v6J" id="evb-rU-HqN"/>
                                         </connections>

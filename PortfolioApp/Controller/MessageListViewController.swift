@@ -11,12 +11,18 @@ import Firebase
 import SDWebImage
 import AlamofireImage
 
+import YPImagePicker
+import AVFoundation
+import AVKit
+import Photos
+
 
 
 
 
 class MessageListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+     var selectedItems = [YPMediaItem]()
     
     var postArray = [Contents]()
     var contentImageString = String()
@@ -140,7 +146,6 @@ class MessageListViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func deletePost(delete indexPath: IndexPath) {
-        
         ref = Database.database().reference()
         //        let keyValue = ref.child("timeLine").child("autoId").key
         self.ref.child("timeLine").child(postArray[indexPath.row].autoId).removeValue()

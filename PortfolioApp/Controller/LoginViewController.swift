@@ -63,10 +63,10 @@ class LoginViewController: UIViewController, NADViewDelegate {
         nadView.setNendID("ac57c9b8b460aa72a2644742dc29072a5e2333ce", spotID: "1003811")
         // delegateを受けるオブジェクトを指定(必須)
         nadView.delegate = self
-        // 読み込み開始(必須)
-        nadView.load()
-        // 通知有無にかかわらずViewに乗せる場合
-        self.view.addSubview(nadView)
+                // 読み込み開始(必須)
+                nadView.load()
+                // 通知有無にかかわらずViewに乗せる場合
+                self.view.addSubview(nadView)
         
        PHPhotoLibrary.requestAuthorization { (status) in
             switch(status) {

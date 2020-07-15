@@ -47,8 +47,10 @@ class MessageListViewController: UIViewController, UITableViewDelegate, UITableV
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.refreshControl = refresh
-        refresh.addTarget(self, action: #selector(update), for: .valueChanged)
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self,
+                                            action: #selector(didPullToRefresh),
+                                            for: .valueChanged)
     }
     
     
@@ -69,28 +71,24 @@ class MessageListViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     
-    @objc func update() {
-        tableView.reloadData()
-        refresh.beginRefreshing()
+    @objc func didPullToRefresh() {
+        //        tableView.reloadData()
+        //        refresh.beginRefreshing()
+        // Re- fetchData
+        print("start Refresh")
+        fetchContentsData()
     }
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        
         return 1
     }
     
-    
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return postArray.count
     }
     
-    
-    
-    //タッチされて、画面遷移
+   //タッチされて、画面遷移
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         contentImageString = postArray[indexPath.row].contentImageString
@@ -105,17 +103,11 @@ class MessageListViewController: UIViewController, UITableViewDelegate, UITableV
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    
-    
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         return view.frame.size.width
     }
     
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.selectionStyle = .blue
         let contentImageView = cell.viewWithTag(1) as! UIImageView
@@ -123,15 +115,9 @@ class MessageListViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
     
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         return 320
     }
-    
-    
-    
-    
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
@@ -144,6 +130,10 @@ class MessageListViewController: UIViewController, UITableViewDelegate, UITableV
             tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
         }
     }
+    
+    
+    
+    
     
     func deletePost(delete indexPath: IndexPath) {
         ref = Database.database().reference()
@@ -221,9 +211,15 @@ class MessageListViewController: UIViewController, UITableViewDelegate, UITableV
     
     
     func fetchContentsData() {
-        
+        self.postArray.removeAll()
+        if tableView.refreshControl?.isRefreshing == true {
+            print("refreshing Data")
+        }
+        else {
+            print("fetching Data")
+        }
         let ref = Database.database().reference().child("timeLine").observe(.value) { (snapShot) in
-            self.postArray.removeAll()
+            
             //    if != nilに置き換えられる。
             if let snapShot = snapShot.children.allObjects as? [DataSnapshot] {
                 //snapShotのキー値を元に、値を取得するのに必要とするのが「snap」。
@@ -238,10 +234,12 @@ class MessageListViewController: UIViewController, UITableViewDelegate, UITableV
                             return
                         }
                         self.postArray.append(Contents(contentImageString: contents, autoId: autoId))
-                        
                     }
                 }
-                self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self.tableView.refreshControl?.endRefreshing()
+                    self.tableView.reloadData()
+                }
             }
             //下にスクロールすると、上のコンテンツが見れるようにする
             //let indexPath = IndexPath(row: self.postArray.count - 1, section: 0)

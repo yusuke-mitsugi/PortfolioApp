@@ -103,10 +103,12 @@ class StampChoiseViewController: UIViewController, UICollectionViewDataSource, U
         return CGSize(width: cellSize, height: cellSize)
     }
     
+    //Drag&Drop
     func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
            return true
        }
     
+    //Drag&Drop
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let item = imageArray.remove(at: sourceIndexPath.row)
         imageArray.insert(item, at: destinationIndexPath.row)

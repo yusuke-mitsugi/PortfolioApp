@@ -87,11 +87,14 @@ class DetailViewController: UIViewController, SelectStampDelegate, YosegakiDeleg
 //        view.addSubview(stampImageView)
 //        print(stampImageView)
         
+       
+//        guard let view = self.view else {
+        //            return
+        //        }
+        //        self.view.isUserInteractionEnabled = false
+        stampImageView = UIImageView()
+        view.addSubview(stampImageView)
         let scale = sender.scale
-        guard let view = self.view else {
-            return
-        }
-//        self.view.isUserInteractionEnabled = false
         if stampImageView == sender.view {
             print("scale", scale)
             if sender.state == .changed {
